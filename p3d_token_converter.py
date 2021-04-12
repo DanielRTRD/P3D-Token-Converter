@@ -4,11 +4,13 @@
 
 import os, json
 
+lang = "en"
+
 # File operations
 THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
-tokens_en = os.path.join(THIS_FOLDER, "Tokens_en.dat")
-json_en = os.path.join(THIS_FOLDER, "en.json")
-oldTokenFile = open(tokens_en, "r")
+tokensFile = os.path.join(THIS_FOLDER, "Tokens_" + lang + ".dat")
+jsonFile = os.path.join(THIS_FOLDER, lang + ".json")
+oldTokenFile = open(tokensFile, "r")
 oldTokenLines = oldTokenFile.readlines()
 
 # Counted Lines
@@ -73,8 +75,8 @@ for line in oldTokenLines:
     newLine = line.split("_", 1)
 
 # Write new dict to new json-file
-with open(json_en, "w") as outfile:
-    json.dump(data, outfile, indent=4)
+with open(jsonFile, "w") as outfile:
+    json.dump(data, outfile, ensure_ascii=False, indent=4)
 
 # Print the data for debugging purposes
 #print(data)
