@@ -69,7 +69,7 @@ for line in oldTokenLines:
             group = name[0] + "_" + name[1]
         else:
             group = key.split("_", 1)[0]
-        if group not in data:
+        if group not in data_tokens:
             data_tokens[group] = {}
         key = key.replace(group + "_", "")
         value = line.split(",", 1)[1]
