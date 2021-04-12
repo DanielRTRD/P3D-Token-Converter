@@ -19,10 +19,11 @@ count = 0
 # Predefine some groups
 data = {}
 data["language_name"] = ""
-data_global = data["global"] = {}
-data_regions = data["regions"] = {}
-data_places = data["places"] = {}
-data_pokemon = data["pokemon"] = {}
+data_tokens = data["tokens"] = {}
+data_global = data_tokens["global"] = {}
+data_regions = data_tokens["regions"] = {}
+data_places = data_tokens["places"] = {}
+data_pokemon = data_tokens["pokemon"] = {}
 data_pokemon_name = data_pokemon["name"] = {}
 data_pokemon_type = data_pokemon["type"] = {}
 data_pokemon_move = data_pokemon["move"] = {}
@@ -69,10 +70,10 @@ for line in oldTokenLines:
         else:
             group = key.split("_", 1)[0]
         if group not in data:
-            data[group] = {}
+            data_tokens[group] = {}
         key = key.replace(group + "_", "")
         value = line.split(",", 1)[1]
-        data[group][key] = value
+        data_tokens[group][key] = value
     newLine = line.split("_", 1)
 
 # Write new dict to new json-file
