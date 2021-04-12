@@ -32,7 +32,8 @@ for line in oldTokenLines:
     count += 1
     line = line.strip() # Strips the newline character
 
-    if line.startswith("language_name"):
+    # Some saved languages has wierd chars on start of file, so we just check if line has the text instead of starting with
+    if "language_name" in line:
         data["language_name"] = line.split(",", 1)[1]
     elif line.startswith("global_"):
         if line.startswith("global_pokemon_type_"):
